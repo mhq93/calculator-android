@@ -11,31 +11,42 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mhq.calculator.ui.theme.CalculatorTheme
 import com.mhq.calculator.ui.theme.ColorBackground
+import com.mhq.calculator.ui.theme.ColorButtonText
 
 @Composable
 fun CalculatorButton(
+    id: Int,
     label: String,
     backgroundColor: Color,
-    modifier: Modifier
+    modifier: Modifier,
+    onClick: (Int) -> Unit = {}
 ) {
+
+    val haptic = LocalHapticFeedback.current
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .clip(RoundedCornerShape(25))
             .background(backgroundColor)
-            .clickable(onClick = {})
+            .clickable{
+                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onClick(id)
+            }
     ) {
         Text(
             text = label,
             fontSize = 48.sp,
             fontWeight = FontWeight.SemiBold,
-            color = Color.White
+            color = ColorButtonText
         )
     }
 }
@@ -45,6 +56,7 @@ fun CalculatorButton(
 fun CalculatorButtonPreview() {
     CalculatorTheme {
         CalculatorButton(
+            id = 0,
             label = "0",
             backgroundColor = ColorBackground,
             modifier = Modifier.size(80.dp)
