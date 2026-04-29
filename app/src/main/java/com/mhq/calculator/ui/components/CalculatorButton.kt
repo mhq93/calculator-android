@@ -18,8 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mhq.calculator.ui.theme.CalculatorTheme
-import com.mhq.calculator.ui.theme.ColorBackground
 import com.mhq.calculator.ui.theme.ColorButtonText
+import com.mhq.calculator.ui.theme.ColorUtility
 
 @Composable
 fun CalculatorButton(
@@ -58,7 +58,7 @@ fun CalculatorButtonPreview() {
         CalculatorButton(
             id = 0,
             label = "0",
-            backgroundColor = ColorBackground,
+            backgroundColor = ColorUtility,
             modifier = Modifier.size(80.dp)
             )
     }

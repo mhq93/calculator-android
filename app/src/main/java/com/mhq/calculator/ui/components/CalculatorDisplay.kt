@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -24,7 +25,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mhq.calculator.ui.theme.ColorDigit
+import com.mhq.calculator.ui.theme.ColorButtonText
 
 @Composable
 fun CalculatorDisplay(
@@ -47,10 +48,10 @@ fun CalculatorDisplay(
     }
 
     val blinkingExpression = buildAnnotatedString {
-        withStyle(SpanStyle(color = ColorDigit)) {
+        withStyle(SpanStyle(color = Color.Black)) {
             append(expression)
         }
-        withStyle(SpanStyle(color = ColorDigit.copy(alpha = cursorAlpha.value))) {
+        withStyle(SpanStyle(color = Color.Black.copy(alpha = cursorAlpha.value))) {
             append("|")
         }
     }
@@ -68,9 +69,9 @@ fun CalculatorDisplay(
             maxLines = 1,
             softWrap = false,
             overflow = TextOverflow.Clip,
-            fontSize = 48.sp,
+            fontSize = 32.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = ColorDigit,
+            color = Color.White,
             modifier = Modifier
                 .horizontalScroll(scrollState)
                 .height(48.dp)
@@ -84,9 +85,9 @@ fun CalculatorDisplay(
             maxLines = 1,
             softWrap = false,
             overflow = TextOverflow.Clip,
-            fontSize = 32.sp,
+            fontSize = 48.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorDigit,
+            color = Color.Black,
             modifier = Modifier
                 .height(48.dp)
         )

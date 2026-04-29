@@ -15,7 +15,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mhq.calculator.R
 import com.mhq.calculator.ui.theme.CalculatorTheme
+import com.mhq.calculator.ui.theme.ColorClearButton
 import com.mhq.calculator.ui.theme.ColorDigit
+import com.mhq.calculator.ui.theme.ColorEqualsButton
 import com.mhq.calculator.ui.theme.ColorOperator
 import com.mhq.calculator.ui.theme.ColorUtility
 
@@ -36,7 +38,7 @@ fun CalculatorGrid(onButtonClick: (Int) -> Unit) {
             CalculatorButton(
                 id = R.string.btn_clear,
                 label = stringResource(R.string.btn_clear),
-                backgroundColor = ColorUtility,
+                backgroundColor = ColorClearButton,
                 modifier = Modifier
                     .weight(1f)
                     .aspectRatio(1f)
@@ -46,8 +48,8 @@ fun CalculatorGrid(onButtonClick: (Int) -> Unit) {
                 }
             )
             CalculatorButton(
-                id = R.string.btn_sign,
-                label = stringResource(R.string.btn_sign),
+                id = R.string.btn_parentheses,
+                label = stringResource(R.string.btn_parentheses),
                 backgroundColor = ColorUtility,
                 modifier = Modifier
                     .weight(1f)
@@ -250,8 +252,8 @@ fun CalculatorGrid(onButtonClick: (Int) -> Unit) {
                 label = stringResource(R.string.btn_0),
                 backgroundColor = ColorDigit,
                 modifier = Modifier
-                    .weight(2f)
-                    .aspectRatio(2f)
+                    .weight(1f)
+                    .aspectRatio(1f)
                     .padding(4.dp),
                 onClick = { id ->
                     onButtonClick(id)
@@ -270,9 +272,21 @@ fun CalculatorGrid(onButtonClick: (Int) -> Unit) {
                 }
             )
             CalculatorButton(
+                id = R.string.btn_back,
+                label = stringResource(R.string.btn_back),
+                backgroundColor = ColorClearButton,
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(4.dp),
+                onClick = { id ->
+                    onButtonClick(id)
+                }
+            )
+            CalculatorButton(
                 id = R.string.btn_equals,
                 label = stringResource(R.string.btn_equals),
-                backgroundColor = ColorOperator,
+                backgroundColor = ColorEqualsButton,
                 modifier = Modifier
                     .weight(1f)
                     .aspectRatio(1f)
